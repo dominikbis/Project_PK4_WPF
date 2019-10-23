@@ -1,0 +1,71 @@
+﻿<Application x:Class="Projekt_PK4_WPF.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:Projekt_PK4_WPF"
+             StartupUri="MainWindow.xaml">
+
+    <Application.Resources>
+        <Thickness x:Key="DefaultMargin">20</Thickness>
+        <Thickness x:Key="DefaultMarginMainMenu">10</Thickness>
+        <Thickness x:Key="DefaultMarginMedicineName">20,20,20,5</Thickness>
+        <Thickness x:Key="DefaultMarginMedicineValue">50,0,20,20</Thickness>
+        <Thickness x:Key="DefaultMarginInlineMedicineValue">0,20,20,5</Thickness>
+
+
+        <Style x:Key="MainMenuTextBlockStyle" TargetType="TextBlock"><!--W UWP wystarczy x:Name, w WPF potrzeba x:Key, poniewaz nazwa nie wplywa na rozroznianie-->
+            <Setter Property="Margin" Value="20"/>
+            <Setter Property="FontSize" Value="40"/>
+            <Setter Property="FontWeight" Value="Thin"/>
+            <Setter Property="FontFamily" Value="BankGothic Lt BT"/>
+        </Style>
+
+
+
+        <Style x:Key="MedicineNameTextBlockStyle" TargetType="TextBlock">
+            <Setter Property="Margin" Value="{StaticResource DefaultMarginMedicineName}"/>
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="FontFamily" Value="Arial Black"/>
+        </Style>
+
+        <Style x:Key="MedicineValueTextBlockStyle" TargetType="TextBlock" BasedOn="{StaticResource MedicineNameTextBlockStyle}">
+            <Setter Property="Margin" Value="{StaticResource DefaultMarginMedicineValue}"/>
+            <Setter Property="FontWeight" Value="Thin"/>
+        </Style>
+
+        <Style x:Key="MedicineValueInlineTextBlockStyle" TargetType="TextBlock" BasedOn="{StaticResource MedicineValueTextBlockStyle}">
+            <Setter Property="Margin" Value="{StaticResource DefaultMarginInlineMedicineValue}"/>
+        </Style>
+
+        <Style x:Key="MedicineLongValueTextBlockStyle" TargetType="TextBlock" BasedOn="{StaticResource MedicineValueTextBlockStyle}">
+            <Setter Property="TextWrapping" Value="Wrap"/>
+        </Style>
+
+        <Style x:Key="MedicineEditTextBoxStyle" TargetType="TextBox">
+            <Setter Property="Margin" Value="{StaticResource DefaultMarginMedicineValue}"/>
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="FontWeight" Value="Thin"/>
+            <Setter Property="FontFamily" Value="Arial Black"/>
+        </Style>
+
+        <Style x:Key="MedicineEditInlineTextBoxStyle" TargetType="TextBox" BasedOn="{StaticResource MedicineEditTextBoxStyle}">
+            <Setter Property="Margin" Value="{StaticResource DefaultMarginInlineMedicineValue}"/>
+        </Style>
+
+        <Style x:Key="MedicineLongEditTextBoxStyle" TargetType="TextBox" BasedOn="{StaticResource MedicineEditTextBoxStyle}">
+            <Setter Property="TextWrapping" Value="Wrap"/>
+        </Style>
+
+
+
+        <DataTemplate x:Key="DataTemplateListMedicineName">
+            <!--moze juz to gdzies jest i tutaj sie niepotrzebnie powtarza, pomysl nad zmiana nazwy-->
+            <Grid>
+                <TextBlock Text="{Binding Name}"/>
+            </Grid>
+        </DataTemplate>
+
+    </Application.Resources>
+
+
+</Application>

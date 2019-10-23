@@ -1,0 +1,112 @@
+﻿<Page x:Class="Projekt_PK4_WPF.MainPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Projekt_PK4_WPF"
+      xmlns:extensions="WpfAppBar"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="MainPage">
+
+    <Page.Resources>
+
+        <Style TargetType="StackPanel">
+            <Setter Property="Margin" Value="{StaticResource DefaultMarginMainMenu}"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+        </Style>
+
+        <Style TargetType="Grid">
+            <Setter Property="VerticalAlignment" Value="Center"/>
+        </Style>
+    </Page.Resources>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <StackPanel Orientation="Vertical">
+            <StackPanel.Resources>
+                <Style TargetType="Button">
+                    <Setter Property="Margin" Value="20"/>
+                    <Setter Property="FontSize" Value="40"/>
+                    <Setter Property="FontWeight" Value="Thin"/>
+                    <Setter Property="FontFamily" Value="BankGothic Lt BT"/>
+                    <Setter Property="Width" Value="300"/>
+                </Style>
+
+                <Style TargetType="TextBlock" BasedOn="{StaticResource MainMenuTextBlockStyle}">
+                    <Setter Property="FontWeight" Value="Bold"/>
+                </Style>
+            </StackPanel.Resources>
+
+            <TextBlock Text="Menu"/>
+            <Button Name="ButtonMenuNewBase" Click="ButtonMenuNewBase_Click" Content="Nowa baza"/>
+            <Button Name="ButtonMenuLoadBase" Click="ButtonMenuLoadBase_Click" Content="Wczytaj"/>
+            <Button Name="ButtonMenuExit" Click="ButtonMenuExit_Click" Content="Wyjdz"/>
+        </StackPanel>
+
+        <Grid x:Name="GridMenuOption" Grid.Column="1" Margin="{StaticResource DefaultMarginMainMenu}">
+            <Grid.Resources>
+                <Style TargetType="TextBlock" BasedOn="{StaticResource MainMenuTextBlockStyle}">
+                    <Setter Property="HorizontalAlignment" Value="Left"/>
+                </Style>
+
+                <Style TargetType="TextBox">
+                    <Setter Property="Margin" Value="20"/>
+                    <Setter Property="FontSize" Value="30"/>
+                    <Setter Property="Width" Value="400"/>
+                    <Setter Property="HorizontalAlignment" Value="Right"/>
+                </Style>
+            </Grid.Resources>
+
+            <Grid x:Name="GridItemHiddenMenu" Visibility="Visible"/>
+            <Grid x:Name="GridItemNewBase" Visibility="Collapsed">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Text="Podaj nazwe bazy"/>
+                    <TextBox x:Name="TextBoxNewBaseName" Grid.Row="1"/>
+                    <TextBlock Text="Podaj lokalizacje pliku" Grid.Row="2"/>
+                    <TextBox x:Name="TextBoxNewBaseAccessPath" Grid.Row="3"/>
+                    <Button x:Name="ButtonCreateBase" Click="ButtonCreateBase_Click" Grid.Row="4" HorizontalAlignment="Right" Background="#FFD8D4D4">
+                        <StackPanel>
+                            <Image Source="C:\Users\Zbyszek\Documents\Visual Studio 2017\Projects\Projekt_PK4_WPF\Projekt_PK4_WPF\icons\icons8-checkmark-64.png" Height="30"/>
+                        </StackPanel>
+                    </Button>
+                </Grid>
+            </Grid>
+            <Grid x:Name="GridItemLoadBase" Visibility="Collapsed">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                    </Grid.RowDefinitions>
+
+                    <TextBlock Text="Podaj nazwe bazy"/>
+                    <TextBox x:Name="TextBoxLoadBaseAccessPath" Grid.Row="1"/>
+                    <Button x:Name="ButtonLoadBase" Click="ButtonLoadBase_Click" Grid.Row="2" HorizontalAlignment="Right" Background="#FFD8D4D4">
+                        <StackPanel>
+                            <Image Source="C:\Users\Zbyszek\Documents\Visual Studio 2017\Projects\Projekt_PK4_WPF\Projekt_PK4_WPF\icons\icons8-checkmark-64.png" Height="30"/>
+                        </StackPanel>
+                    </Button>
+                    <StackPanel x:Name="StackPanelLoadBaseProgress" Visibility="{Binding ElementName=AppBarButtonLoadBase, Path=IsPressed}"
+                                Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Left" Margin="0">
+                        <!--dodaj proggresAnimation-->
+                        <!--<TextBlock Text="Wczytywanie..." FontSize="30" VerticalAlignment="Center" Margin="10,0,0,0"/>-->
+                    </StackPanel>
+                </Grid>
+            </Grid>
+        </Grid>
+    </Grid>
+</Page>
