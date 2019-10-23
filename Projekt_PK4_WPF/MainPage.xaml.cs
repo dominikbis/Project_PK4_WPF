@@ -21,6 +21,7 @@ namespace Projekt_PK4_WPF
     /// <summary>
     /// Interaction logic for MainPage.xaml
     /// </summary>
+    /// 
     public partial class MainPage : Page
     {
         private Database database;
