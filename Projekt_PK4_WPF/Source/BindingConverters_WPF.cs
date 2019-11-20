@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Data;
 
-namespace Projekt_PK4
+namespace Projekt_PK4_WPF
 {
     public class BindingConverterPrice : IValueConverter
     {

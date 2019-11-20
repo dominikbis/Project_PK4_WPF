@@ -58,12 +58,61 @@
 
 
 
+        <Style x:Key="OriginalTextBlockStyle" TargetType="TextBlock">
+            
+        </Style>
+        <Style x:Key="ButtonImageStyle" TargetType="Button">
+            <Setter Property="Margin" Value="{StaticResource DefaultMarginMainMenu}"/>
+            <Style.Resources>
+                <Style TargetType="Image">
+                    <Setter Property="Height" Value="30"/>
+                </Style>
+                <Style TargetType="TextBlock" BasedOn="{StaticResource OriginalTextBlockStyle}"/>
+            </Style.Resources>
+        </Style>
+
+
+
         <DataTemplate x:Key="DataTemplateListMedicineName">
             <!--moze juz to gdzies jest i tutaj sie niepotrzebnie powtarza, pomysl nad zmiana nazwy-->
             <Grid>
                 <TextBlock Text="{Binding Name}"/>
             </Grid>
         </DataTemplate>
+
+
+
+        <Style x:Key="BarButtonStyle" TargetType="local:ImageButton">
+            <Setter Property="Height" Value="70"/>
+            <Setter Property="Width" Value="70"/>
+
+            <Style.Resources>
+                <Style TargetType="Button">
+                    <Setter Property="Background" Value="Transparent"/>
+                    <Setter Property="BorderBrush" Value="Transparent"/>
+                </Style>
+                <Style TargetType="Image">
+                    <Setter Property="Height" Value="25"/>
+                </Style>
+                <Style TargetType="TextBlock">
+                    <Setter Property="TextWrapping" Value="Wrap"/>
+                </Style>
+            </Style.Resources>
+        </Style>
+
+
+        <BitmapImage x:Key="BitmapImageAccept" UriSource="C:\Users\Zbyszek\Documents\Visual Studio 2017\Projects\Projekt_PK4_WPF\Projekt_PK4_WPF\icons\icons8-checkmark-64.png"/>
+        <BitmapImage x:Key="BitmapImageEdit" UriSource="C:\Users\Zbyszek\Documents\Visual Studio 2017\Projects\Projekt_PK4_WPF\Projekt_PK4_WPF\icons\icons8-edit-64.png"/>
+        <BitmapImage x:Key="BitmapImageDisplay" UriSource="C:\Users\Zbyszek\Documents\Visual Studio 2017\Projects\Projekt_PK4_WPF\Projekt_PK4_WPF\icons\icons8-eye-64.png"/>
+        <BitmapImage x:Key="BitmapImageBack" UriSource="C:\Users\Zbyszek\Documents\Visual Studio 2017\Projects\Projekt_PK4_WPF\Projekt_PK4_WPF\icons\icons8-left-64.png"/>
+        <BitmapImage x:Key="BitmapImageLog" UriSource="C:\Users\Zbyszek\Documents\Visual Studio 2017\Projects\Projekt_PK4_WPF\Projekt_PK4_WPF\icons\icons8-log-80.png"/>
+        <BitmapImage x:Key="BitmapImageAdd" UriSource="C:\Users\Zbyszek\Documents\Visual Studio 2017\Projects\Projekt_PK4_WPF\Projekt_PK4_WPF\icons\icons8-plus-math-64.png"/>
+        <BitmapImage x:Key="BitmapImageSave" UriSource="C:\Users\Zbyszek\Documents\Visual Studio 2017\Projects\Projekt_PK4_WPF\Projekt_PK4_WPF\icons\icons8-save-64.png"/>
+        <BitmapImage x:Key="BitmapImageSearch" UriSource="C:\Users\Zbyszek\Documents\Visual Studio 2017\Projects\Projekt_PK4_WPF\Projekt_PK4_WPF\icons\icons8-search-64.png"/>
+        <BitmapImage x:Key="BitmapImageDelete" UriSource="C:\Users\Zbyszek\Documents\Visual Studio 2017\Projects\Projekt_PK4_WPF\Projekt_PK4_WPF\icons\icons8-trash-64.png"/>
+        <BitmapImage x:Key="BitmapImageUndo" UriSource="C:\Users\Zbyszek\Documents\Visual Studio 2017\Projects\Projekt_PK4_WPF\Projekt_PK4_WPF\icons\icons8-undo-alt-64.png"/>
+        <BitmapImage x:Key="BitmapImageAdminSettings" UriSource="C:\Users\Zbyszek\Documents\Visual Studio 2017\Projects\Projekt_PK4_WPF\Projekt_PK4_WPF\icons\icons8-admin-settings-male-50.png"/>
+        <BitmapImage x:Key="BitmapImageAdminAdd" UriSource="C:\Users\Zbyszek\Documents\Visual Studio 2017\Projects\Projekt_PK4_WPF\Projekt_PK4_WPF\icons\icons8-add-administrator-50.png"/>
 
     </Application.Resources>
 

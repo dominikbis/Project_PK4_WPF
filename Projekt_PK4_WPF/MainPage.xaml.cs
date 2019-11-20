@@ -14,8 +14,6 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-using Projekt_PK4;
-
 namespace Projekt_PK4_WPF
 {
     /// <summary>
@@ -48,13 +46,13 @@ namespace Projekt_PK4_WPF
         }
 
 
-        private void ButtonCreateBase_Click(object sender, RoutedEventArgs e)
+        private void ButtonImageCreateBase_Click(object sender, RoutedEventArgs e)
         {
             if (TextBoxNewBaseName.Text != "")//
             {
                 database = new Database(TextBoxNewBaseName.Text, TextBoxNewBaseAccessPath.Text);
 
-                //Frame.Navigate(typeof(DatabasePage), database);
+                this.NavigationService.Navigate(new DatabasePage(database));
             }
             else
             {
@@ -62,7 +60,7 @@ namespace Projekt_PK4_WPF
             }
         }
 
-        private void ButtonLoadBase_Click(object sender, RoutedEventArgs e)
+        private void ButtonImageLoadBase_Click(object sender, RoutedEventArgs e)
         {
             try
             {
@@ -82,7 +80,7 @@ namespace Projekt_PK4_WPF
                 return;
             }
 
-            //Frame.Navigate(typeof(DatabasePage), database);
+            this.NavigationService.Navigate(new DatabasePage(database));
         }
 
         private void ButtonMenuExit_Click(object sender, RoutedEventArgs e)

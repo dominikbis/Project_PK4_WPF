@@ -1,0 +1,134 @@
+﻿<Page x:Class="Projekt_PK4_WPF.DatabasePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Projekt_PK4_WPF"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="DatabasePage">
+
+    <Page.Resources>
+
+        <local:BindingConverterPrice x:Key="BindingConverterPrice"/>
+        <local:BindingConverterDouble x:Key="BindingConverterDouble"/>
+
+        <DataTemplate x:Key="DataTemplateListViewDatabase">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="170"/>
+                    <ColumnDefinition Width="140"/>
+                    <ColumnDefinition Width="120"/>
+                    <ColumnDefinition Width="50"/>
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Text="{Binding Name}"/>
+                <TextBlock Text="{Binding Type}" Grid.Column="1"/>
+                <TextBlock Text="{Binding Price, Converter={StaticResource BindingConverterPrice}}" Grid.Column="2"/>
+                <Image Source="{StaticResource BitmapImageAccept}" Visibility="{Binding RM_Reimbursed}" Width="20" Grid.Column="3"/>
+            </Grid>
+        </DataTemplate>
+
+        <Style TargetType="ListView">
+            <Setter Property="Margin" Value="20"/>
+            <Setter Property="ItemTemplate" Value="{StaticResource DataTemplateListViewDatabase}"/>
+        </Style>
+    </Page.Resources>
+
+    <Grid Margin="{StaticResource DefaultMargin}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Orientation="Horizontal" Margin="20,0,20,20">
+            <!--potem wlasny pasek - wlasny usercontrol-->
+            <StackPanel.Resources>
+                <Style TargetType="TextBlock">
+                    <Setter Property="Margin" Value="10,30,0,0"/>
+                    <Setter Property="FontSize" Value="20"/>
+                </Style>
+
+                <Style TargetType="local:ImageButton" BasedOn="{StaticResource BarButtonStyle}">
+                    <Setter Property="Margin" Value="10,20,0,0"/>
+                </Style>
+                <Style TargetType="Separator">
+                    <Setter Property="Margin" Value="0,20,0,0"/>
+                </Style>
+            </StackPanel.Resources>
+
+            <TextBlock Text="Baza :"/>
+            <TextBlock x:Name="TextBlockDatabaseName" Text="x:bind"/>
+            <Separator/>
+            <local:ImageButton x:Name="ImageButtonReturnToMainMenu" Click="ImageButtonReturnToMainMenu_Click" ImageSource="{StaticResource BitmapImageBack}" Text="Powrót"/>
+            <local:ImageButton x:Name="ImageButtonSaveBase" Click="ImageButtonSaveBase_Click" ImageSource="{StaticResource BitmapImageSave}" Text="Zapisz"/>
+            <Separator/>
+            <local:ImageButton x:Name="ImageButtonAddMed" Click="ImageButtonAddMed_Click" ImageSource="{StaticResource BitmapImageAdd}" Text="Dodaj"/>
+            <local:ImageButton x:Name="ImageButtonSearchMed" Click="ImageButtonSearchMed_Click" ImageSource="{StaticResource BitmapImageSearch}"  Text="Szukaj"/>
+            <Separator/>
+            <local:ImageButton x:Name="ImageButtonDeleteMed" Click="ImageButtonDeleteMed_Click" ImageSource="{StaticResource BitmapImageDelete}"  Text="Usuń"/>
+            <local:ImageButton x:Name="ImageButtonDisplayMed" Click="ImageButtonDisplayMed_Click" ImageSource="{StaticResource BitmapImageDisplay}" Text="Wyświetl"/>
+            <local:ImageButton x:Name="ImageButtonEditMed" Click="ImageButtonEditMed_Click" ImageSource="{StaticResource BitmapImageEdit}"  Text="Edytuj"/>
+            <Separator/>
+            <local:ImageButton x:Name="ImageButtonDisplayLog" Click="ImageButtonDisplayLog_Click" ImageSource="{StaticResource BitmapImageLog}"  Text="Dziennik"/>
+            <Separator x:Name="SeparatorTestingMode" Visibility="Collapsed"/>
+            <local:ImageButton x:Name="ImageButtonTESTING_R" Click="ImageButtonTESTING_R_Click" ImageSource="{StaticResource BitmapImageAdminSettings}"  Text="TESTING R" Background="Red" Visibility="Collapsed"/>
+            <local:ImageButton x:Name="ImageButtonTESTING_M" Click="ImageButtonTESTING_M_Click"  ImageSource="{StaticResource BitmapImageAdminAdd}"  Text="TESTING M" Background="Red" Visibility="Collapsed"/>
+        </StackPanel>
+
+        <Grid Grid.Row="1" Name="GridSearchCriteria" Visibility="Collapsed">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <TextBox Name="TextBoxSearchMedName"
+                     Text="x:bind"
+                     TextChanged="ControlBoxSearchMed_TextChanged">
+            </TextBox>
+            <TextBox Name="TextBoxSearchMedType"
+                     Text="x:Bind"
+                     TextChanged="ControlBoxSearchMed_TextChanged" Grid.Row="1"/>
+
+            <!--TextBoxSearchMedPrice nie dziala poprawnie dla . zle sie wpisuje-->
+            <TextBox Name="TextBoxSearchMedPrice"
+                     Text="x:bind"
+                     TextChanged="ControlBoxSearchMed_TextChanged"
+                     Grid.Column="1"/>
+            <TextBox Name="TextBoxSearchMedIntended"
+                     Text="x:bind"
+                     TextChanged="ControlBoxSearchMed_TextChanged" Grid.Row="1" Grid.Column="1"/>
+
+            <TextBox Name="TextBoxSearchMedComposition"
+                     Text="x:bind"
+                     TextChanged="ControlBoxSearchMed_TextChanged" Grid.Column="2"/>
+
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Grid.Row="2" Grid.Column="2">
+                <CheckBox IsChecked="False" Click="CheckBoxSearchMedReimbursed_Click" Name="CheckBoxSearchMedReimbursed" Content="Refundacja"/>
+                <Button Name="ButtonSearchMedClear" Click="ButtonSearchMedClear_Click" Content="Wyczyść"/>
+
+            </StackPanel>
+        </Grid>
+
+        <StackPanel Orientation="Horizontal" Grid.Row="2" Margin="0,20,0,0">
+            <TextBlock Text="Nazwa" Width="180"/>
+            <TextBlock Text="Typ" Width="150"/>
+            <TextBlock Text="Cena" Width="110"/>
+            <TextBlock Text="Refundacja" Width="80"/>
+        </StackPanel>
+
+        <ListView Name="ListViewDatabase" Grid.Row="3"/>
+
+
+
+
+    </Grid>
+</Page>

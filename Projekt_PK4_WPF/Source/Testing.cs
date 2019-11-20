@@ -5,7 +5,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
-namespace Projekt_PK4
+namespace Projekt_PK4_WPF
 {
     public static class RandomDatabase
     {

@@ -7,7 +7,7 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Projekt_PK4
+namespace Projekt_PK4_WPF
 {
     public class Medicine : StructMedicine, INotifyPropertyChanged
     {

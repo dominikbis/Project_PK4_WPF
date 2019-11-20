@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:Projekt_PK4_WPF"
       xmlns:extensions="WpfAppBar"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="900" d:DesignWidth="1200"
       Title="MainPage">
 
     <Page.Resources>
@@ -78,11 +78,11 @@
                     <TextBox x:Name="TextBoxNewBaseName" Grid.Row="1"/>
                     <TextBlock Text="Podaj lokalizacje pliku" Grid.Row="2"/>
                     <TextBox x:Name="TextBoxNewBaseAccessPath" Grid.Row="3"/>
-                    <Button x:Name="ButtonCreateBase" Click="ButtonCreateBase_Click" Grid.Row="4" HorizontalAlignment="Right" Background="#FFD8D4D4">
-                        <StackPanel>
-                            <Image Source="C:\Users\Zbyszek\Documents\Visual Studio 2017\Projects\Projekt_PK4_WPF\Projekt_PK4_WPF\icons\icons8-checkmark-64.png" Height="30"/>
-                        </StackPanel>
-                    </Button>
+                    <local:ImageButton x:Name="ButtonImageCreateBase"
+                                       Click="ButtonImageCreateBase_Click"
+                                       ImageSource="{StaticResource BitmapImageAccept}"
+                                       Style="{StaticResource BarButtonStyle}"
+                                       HorizontalAlignment="Right" Background="#FFD8D4D4" VerticalAlignment="Bottom" Grid.Row="4"/>
                 </Grid>
             </Grid>
             <Grid x:Name="GridItemLoadBase" Visibility="Collapsed">
@@ -95,11 +95,11 @@
 
                     <TextBlock Text="Podaj nazwe bazy"/>
                     <TextBox x:Name="TextBoxLoadBaseAccessPath" Grid.Row="1"/>
-                    <Button x:Name="ButtonLoadBase" Click="ButtonLoadBase_Click" Grid.Row="2" HorizontalAlignment="Right" Background="#FFD8D4D4">
-                        <StackPanel>
-                            <Image Source="C:\Users\Zbyszek\Documents\Visual Studio 2017\Projects\Projekt_PK4_WPF\Projekt_PK4_WPF\icons\icons8-checkmark-64.png" Height="30"/>
-                        </StackPanel>
-                    </Button>
+                    <local:ImageButton x:Name="ButtonImageLoadBase"
+                                       Click="ButtonImageLoadBase_Click"
+                                       ImageSource="{StaticResource BitmapImageAccept}"
+                                       Style="{StaticResource BarButtonStyle}"
+                                       HorizontalAlignment="Right" Background="#FFD8D4D4" VerticalAlignment="Bottom" Grid.Row="2"/>
                     <StackPanel x:Name="StackPanelLoadBaseProgress" Visibility="{Binding ElementName=AppBarButtonLoadBase, Path=IsPressed}"
                                 Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Left" Margin="0">
                         <!--dodaj proggresAnimation-->
