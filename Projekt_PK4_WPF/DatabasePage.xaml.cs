@@ -24,7 +24,7 @@ namespace Projekt_PK4_WPF
 
         private DatabaseSearch databaseSearch;
 
-        private bool TestingMode = false;
+        private bool TestingMode = true;
 
         public DatabasePage()
         {
@@ -113,7 +113,7 @@ namespace Projekt_PK4_WPF
                 int index = database.medBase.IndexOf(med);
 
                 NavigationParameters navigationParameters = new NavigationParameters(database, index);
-                //Frame.Navigate(typeof(MedicinePage), navigationParameters);
+                this.NavigationService.Navigate(new MedicinePage(navigationParameters));
             }
         }
 
@@ -222,10 +222,12 @@ namespace Projekt_PK4_WPF
             ListViewDatabase.ItemsSource = databaseSearch.displayedMedBase;
 
 
-            binding = new Binding() { Source = this, Path = new PropertyPath("TestingMode") };
-            SeparatorTestingMode.SetBinding(Separator.VisibilityProperty, binding);
-            ImageButtonTESTING_R.SetBinding(ImageButton.VisibilityProperty, binding);
-            ImageButtonTESTING_M.SetBinding(ImageButton.VisibilityProperty, binding);
+            if (TestingMode) 
+            {
+                SeparatorTestingMode.Visibility = Visibility.Visible;
+                ImageButtonTESTING_R.Visibility = Visibility.Visible;
+                ImageButtonTESTING_M.Visibility = Visibility.Visible;
+            }
 
 
         }

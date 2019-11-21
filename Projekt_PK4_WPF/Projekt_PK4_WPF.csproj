@@ -58,6 +58,9 @@
     <Compile Include="DatabasePage.xaml.cs">
       <DependentUpon>DatabasePage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="MedicinePage.xaml.cs">
+      <DependentUpon>MedicinePage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Source\BindingConverters_WPF.cs" />
     <Compile Include="Source\Database_WPF.cs" />
     <Compile Include="Source\DatabaseLog.cs" />
@@ -96,6 +99,10 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="MedicinePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="UserControls\ImageButton.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

@@ -1,0 +1,143 @@
+﻿<Page x:Class="Projekt_PK4_WPF.MedicinePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Projekt_PK4_WPF"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="MedicinePage">
+
+    <Page.Resources>
+        <local:BindingConverterPrice x:Key="BindingConverterPrice"/>
+
+        <Style TargetType="StackPanel">
+            <Setter Property="Orientation" Value="Horizontal"/>
+        </Style>
+
+        <Style TargetType="ListView">
+            <Setter Property="Margin" Value="20"/>
+        </Style>
+
+        <Style TargetType="local:ImageButton">
+            <Setter Property="Margin" Value="20"/>
+        </Style>
+    </Page.Resources>
+
+
+
+    <Grid Margin="{StaticResource DefaultMargin}">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="3*"/>
+        </Grid.ColumnDefinitions>
+
+        <StackPanel Margin="20,0,20,20" Grid.ColumnSpan="2">
+            <StackPanel.Resources>
+                <Style TargetType="TextBlock">
+                    <Setter Property="Margin" Value="10,30,0,0"/>
+                    <Setter Property="FontSize" Value="20"/>
+                </Style>
+
+                <Style TargetType="local:ImageButton" BasedOn="{StaticResource BarButtonStyle}">
+                    <Setter Property="Margin" Value="10,20,0,0"/>
+                </Style>
+            </StackPanel.Resources>
+
+            <TextBlock Text="Baza :"/>
+            <TextBlock Name="TextBlockDatabaseName"/>
+            <local:ImageButton x:Name="ImageButtonReturnToDatabase" Click="ImageButtonReturnToDatabase_Click" ImageSource="{StaticResource BitmapImageBack}" Text="Powrót"/>
+            <local:ImageButton x:Name="ImageButtonDeleteMed" Click="ImageButtonDeleteMed_Click" ImageSource="{StaticResource BitmapImageDelete}" Text="Usuń"/>
+            <local:ImageButton x:Name="ImageButtonEditMed" Click="ImageButtonEditMed_Click" ImageSource="{StaticResource BitmapImageEdit}" Text="Edytuj"/>
+        </StackPanel>
+
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+
+            <TextBlock Text="Nazwa" Style="{StaticResource MedicineNameTextBlockStyle}"/>
+            <TextBlock Name="TextBlockMedicineName" Grid.Row="1" Style="{StaticResource MedicineValueTextBlockStyle}"/>
+            <TextBlock Text="Typ" Grid.Row="2" Style="{StaticResource MedicineNameTextBlockStyle}"/>
+            <TextBlock Name="TextBlockMedicineType" Grid.Row="3" Style="{StaticResource MedicineValueTextBlockStyle}"/>
+            <TextBlock Text="Ograniczenia wiekowe" Grid.Row="4" Style="{StaticResource MedicineNameTextBlockStyle}"/>
+            <TextBlock Name="TextBlockMedicineAgeRestrictions" Grid.Row="5" Style="{StaticResource MedicineValueTextBlockStyle}"/>
+            <TextBlock Text="Działanie" Grid.Row="6" Style="{StaticResource MedicineNameTextBlockStyle}"/>
+            <ScrollViewer Height="100"  Grid.Row="7">
+                <TextBlock Name="TextBlockMedicineIntended" Style="{StaticResource MedicineLongValueTextBlockStyle}"/>
+            </ScrollViewer>
+            <TextBlock Text="Skład" Grid.Row="8" Style="{StaticResource MedicineNameTextBlockStyle}"/>
+            <ScrollViewer Height="100"  Grid.Row="9">
+                <TextBlock Name="TextBlockMedicineComposition" Style="{StaticResource MedicineLongValueTextBlockStyle}"/>
+            </ScrollViewer>
+            <TextBlock Text="Uwagi" Grid.Row="10" Style="{StaticResource MedicineNameTextBlockStyle}"/>
+            <ScrollViewer Height="100" Grid.Row="11">
+                <TextBlock Name="TextBlockMedicineComments" Style="{StaticResource MedicineLongValueTextBlockStyle}"/>
+            </ScrollViewer>
+        </Grid>
+
+        <Grid Grid.Row="1" Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+
+                <TextBlock Text="Zamienniki" Style="{StaticResource MedicineNameTextBlockStyle}"/>
+                <ListView Name="ListViewReplacements" Grid.Row="1" ItemTemplate="{StaticResource DataTemplateListMedicineName}"/>
+                <Button Name="ButtonDisplayReplacement" Click="ButtonDisplayReplacement_Click" Content="Wyświetl" Grid.Row="2" HorizontalAlignment="Center"/>
+            </Grid>
+
+            <Grid Grid.Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+
+                <StackPanel>
+                    <TextBlock Text="Cena :" Style="{StaticResource MedicineNameTextBlockStyle}"/>
+                    <TextBlock Name="TextBlockMedicinePrice" Style="{StaticResource MedicineValueInlineTextBlockStyle}"/>
+                </StackPanel>
+                <TextBlock Text="Refundacja" Grid.Row="1" Style="{StaticResource MedicineNameTextBlockStyle}" FontWeight="Bold" FontSize="25" Margin="20,60,20,20"/>
+                <StackPanel Grid.Row="2">
+                    <TextBlock Text="Stopien refundacji" Style="{StaticResource MedicineNameTextBlockStyle}"/>
+                    <TextBlock Name="TextBlockMedicineRM_Level" Style="{StaticResource MedicineValueInlineTextBlockStyle}"/>
+                </StackPanel>
+                <StackPanel Name="StackPanelMedicineRM_FundingLimit" Visibility="Collapsed" Grid.Row="3">
+                    <TextBlock Text="Limit Dofinansowania :" Style="{StaticResource MedicineNameTextBlockStyle}"/>
+                    <TextBlock Name="TextBlockMedicineRM_FundingLimit" Style="{StaticResource MedicineValueInlineTextBlockStyle}"/>
+                </StackPanel>
+                <StackPanel Name="StackPanelMedicinePriceAfterDiscount" Visibility="Collapsed" Grid.Row="4">
+                    <TextBlock Text="Cena po refundacji :" Style="{StaticResource MedicineNameTextBlockStyle}"/>
+                    <TextBlock Name="TextBlockMedicinePriceAfterDiscount" Style="{StaticResource MedicineValueInlineTextBlockStyle}"/>
+                </StackPanel>
+            </Grid>
+        </Grid>
+    </Grid>
+</Page>
