@@ -73,7 +73,7 @@ namespace Projekt_PK4_WPF
         private void ImageButtonAddMed_Click(object sender, RoutedEventArgs e)
         {
             NavigationParameters navigationParameters = new NavigationParameters(database, -1);
-            //Frame.Navigate(typeof(CreateMedicinePage), navigationParameters);
+            this.NavigationService.Navigate(new CreateMedicinePage(navigationParameters));
         }
 
         private void ImageButtonSearchMed_Click(object sender, RoutedEventArgs e)
@@ -124,13 +124,13 @@ namespace Projekt_PK4_WPF
                 int index = database.medBase.IndexOf(med);
 
                 NavigationParameters navigationParameters = new NavigationParameters(database, index);
-                //Frame.Navigate(typeof(CreateMedicinePage), navigationParameters);
+                this.NavigationService.Navigate(new CreateMedicinePage(navigationParameters));
             }
         }
 
         private void ImageButtonDisplayLog_Click(object sender, RoutedEventArgs e)
         {
-            //Frame.Navigate(typeof(DatabaseLogPage), database);
+            this.NavigationService.Navigate(new DatabaseLogPage(database));
         }
 
 

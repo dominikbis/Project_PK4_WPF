@@ -27,6 +27,8 @@ namespace Projekt_PK4_WPF
         public MedicinePage()
         {
             this.InitializeComponent();
+
+            Bind();
         }
 
         public MedicinePage(NavigationParameters navigationParameters)
@@ -67,8 +69,8 @@ namespace Projekt_PK4_WPF
 
         private void ImageButtonEditMed_Click(object sender, RoutedEventArgs e)
         {
-            //NavigationParameters navigationParameters = new NavigationParameters(database, index);
-            //Frame.Navigate(typeof(CreateMedicinePage), navigationParameters);
+            NavigationParameters navigationParameters = new NavigationParameters(database, index);
+            this.NavigationService.Navigate(new CreateMedicinePage(navigationParameters));
         }
 
         private void ButtonDisplayReplacement_Click(object sender, RoutedEventArgs e)

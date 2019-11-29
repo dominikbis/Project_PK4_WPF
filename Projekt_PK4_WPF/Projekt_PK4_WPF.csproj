@@ -55,6 +55,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="CreateMedicinePage.xaml.cs">
+      <DependentUpon>CreateMedicinePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DatabaseLogPage.xaml.cs">
+      <DependentUpon>DatabaseLogPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="DatabasePage.xaml.cs">
       <DependentUpon>DatabasePage.xaml</DependentUpon>
     </Compile>
@@ -76,6 +82,14 @@
     <Compile Include="UserControls\ImageButton.xaml.cs">
       <DependentUpon>ImageButton.xaml</DependentUpon>
     </Compile>
+    <Page Include="CreateMedicinePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DatabaseLogPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="DatabasePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
